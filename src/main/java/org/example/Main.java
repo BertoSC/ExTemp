@@ -33,14 +33,15 @@ public class Main {
 
         // Crear y iniciar hilos
         // Se calculan los índices en función del tamaño de cada parte del array principal
-
+        int posIn = 0;
+        int posFin = tamParte;
         for (int j = 0; j < numPartes; j++) {
-            int posIn = j * tamParte;
-            int posFin = (j + 1) * tamParte;
-
             runnables[j] = new RunnableTemp(temp, posIn, posFin);
             threads[j] = new Thread(runnables[j]);
             threads[j].start();
+            posIn = posIn + tamParte;
+            posFin = posFin + tamParte;
+
         }
 
         // Esperar a que todos los hilos terminen
