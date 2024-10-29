@@ -3,22 +3,31 @@ package org.example;
 public class RunnableTemp implements Runnable{
     int [] temperatures;
     int sum;
+    int inicio;
+    int fin;
 
-    public RunnableTemp(int [] temperatures) {
+
+
+    public RunnableTemp(int [] temperatures, int inicio, int fin) {
         this.temperatures = temperatures;
+        this.inicio=inicio;
+        this.fin=fin;
     }
 
     @Override
     public void run() {
-        suma(temperatures);
+        suma();
     }
 
-    public int suma (int [] i){
-        for (int t:temperatures){
-            sum+=t;
+    public void suma () {
+        for (int t=inicio; t<fin; t++) {
+            sum += temperatures[t];
+        }
+    }
+
+    public int getSuma () {
+            return sum;
+
         }
 
-        return sum;
-
-    }
 }
